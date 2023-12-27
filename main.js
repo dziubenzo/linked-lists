@@ -7,8 +7,7 @@ class LinkedList {
   append(node) {
     const addToEnd = (node, list = this) => {
       if (list.next === null) {
-        list.next = node;
-        return;
+        return (list.next = node);
       } else {
         addToEnd(node, list.next);
       }
@@ -16,7 +15,12 @@ class LinkedList {
     addToEnd(node);
   }
 
-  prepend(node) {}
+  prepend(node) {
+    const headValue = this.value;
+    const headNext = this.next;
+    this.value = node.value;
+    this.next = new Node(headValue, headNext);
+  }
 }
 
 class Node {
@@ -33,4 +37,6 @@ linkedList.append(new Node(20));
 linkedList.append(new Node(25));
 linkedList.append(new Node(30));
 linkedList.prepend(new Node(1));
+linkedList.prepend(new Node(2));
+linkedList.prepend(new Node(3));
 console.log(linkedList);
