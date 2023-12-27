@@ -23,10 +23,10 @@ class LinkedList {
 
   size() {
     let pointer = this;
-    let counter = 1;
-    while (pointer.next !== null) {
-      counter++;
+    let counter = 0;
+    while (pointer !== null) {
       pointer = pointer.next;
+      counter++;
     }
     return counter;
   }
@@ -78,6 +78,19 @@ class LinkedList {
     }
     return false;
   }
+
+  find(value) {
+    let pointer = this;
+    let index = 0;
+    while (pointer !== null) {
+      if (pointer.value === value) {
+        return index;
+      }
+      pointer = pointer.next;
+      index++;
+    }
+    return null;
+  }
 }
 
 class Node {
@@ -102,5 +115,6 @@ console.log(linkedList);
 // console.log(linkedList.tail());
 // console.log(linkedList.at(8));
 linkedList.pop();
-console.log(linkedList.tail());
-console.log(linkedList.contains(25));
+// console.log(linkedList.tail());
+// console.log(linkedList.contains(25));
+console.log(linkedList.find(25));
