@@ -35,6 +35,20 @@ class LinkedList {
   head() {
     return new Node(this.value);
   }
+
+  tail() {
+    let lastNode;
+    const findLast = (list = this) => {
+      if (list.next === null) {
+        lastNode = list;
+        return;
+      } else {
+        findLast(list.next);
+      }
+    };
+    findLast();
+    return lastNode;
+  }
 }
 
 class Node {
@@ -54,5 +68,6 @@ linkedList.prepend(new Node(1));
 linkedList.prepend(new Node(2));
 linkedList.prepend(new Node(3));
 console.log(linkedList);
-console.log(linkedList.size());
-console.log(linkedList.head());
+// console.log(linkedList.size());
+// console.log(linkedList.head());
+console.log(linkedList.tail());
