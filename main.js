@@ -91,6 +91,17 @@ class LinkedList {
     }
     return null;
   }
+
+  toString() {
+    let pointer = this;
+    let string = '';
+    while (pointer !== null) {
+      string += `( ${pointer.value} ) -> `;
+      pointer = pointer.next;
+    }
+    string += 'null';
+    return string;
+  }
 }
 
 class Node {
@@ -118,3 +129,4 @@ linkedList.pop();
 // console.log(linkedList.tail());
 // console.log(linkedList.contains(25));
 console.log(linkedList.find(25));
+console.log(linkedList.toString());
