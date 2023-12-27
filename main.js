@@ -108,7 +108,9 @@ class LinkedList {
       return this.prepend(new Node(value));
     }
     if (index > this.size()) {
-      return console.log('Error: The index value is too high. Try using a smaller index value.');
+      return console.log(
+        'Error: The index value is too high. Try using a smaller index value.'
+      );
     }
     let nodeBefore;
     const findNodeBefore = (counter = 0, list = this) => {
@@ -121,6 +123,27 @@ class LinkedList {
     findNodeBefore();
     const oldNext = nodeBefore.next;
     nodeBefore.next = new Node(value, oldNext);
+  }
+
+  removeAt(index) {
+    if (index === 0) {
+      this.value = this.next.value;
+      this.next = this.next.next;
+      return;
+    }
+    if (index >= this.size()) {
+      return console.log(
+        'Error: The index value is too high. Try using a smaller index value.'
+      );
+    }
+    const findAndSkipNode = (counter = 0, list = this) => {
+      if (counter === index - 1) {
+        return (list.next = list.next.next);
+      }
+      counter++;
+      findAndSkipNode(counter++, list.next);
+    };
+    findAndSkipNode();
   }
 }
 
@@ -147,6 +170,7 @@ linkedList.pop();
 // console.log(linkedList.tail());
 // console.log(linkedList.contains(25));
 // console.log(linkedList.find(25));
-// console.log(linkedList.size());
 linkedList.insertAt(5555, 3);
+// console.log(linkedList.size());
+linkedList.removeAt(8);
 console.log(linkedList.toString());
