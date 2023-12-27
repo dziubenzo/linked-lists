@@ -102,6 +102,26 @@ class LinkedList {
     string += 'null';
     return string;
   }
+
+  insertAt(value, index) {
+    if (index === 0) {
+      return this.prepend(new Node(value));
+    }
+    if (index > this.size()) {
+      return console.log('Error: The index value is too high. Try using a smaller index value.');
+    }
+    let nodeBefore;
+    const findNodeBefore = (counter = 0, list = this) => {
+      if (counter === index - 1) {
+        return (nodeBefore = list);
+      }
+      counter++;
+      findNodeBefore(counter++, list.next);
+    };
+    findNodeBefore();
+    const oldNext = nodeBefore.next;
+    nodeBefore.next = new Node(value, oldNext);
+  }
 }
 
 class Node {
@@ -120,13 +140,13 @@ linkedList.append(new Node(30));
 linkedList.prepend(new Node(1));
 linkedList.prepend(new Node(2));
 linkedList.prepend(new Node(3));
-console.log(linkedList);
-// console.log(linkedList.size());
 // console.log(linkedList.head());
 // console.log(linkedList.tail());
 // console.log(linkedList.at(8));
 linkedList.pop();
 // console.log(linkedList.tail());
 // console.log(linkedList.contains(25));
-console.log(linkedList.find(25));
+// console.log(linkedList.find(25));
+// console.log(linkedList.size());
+linkedList.insertAt(5555, 3);
 console.log(linkedList.toString());
