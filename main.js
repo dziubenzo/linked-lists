@@ -21,6 +21,16 @@ class LinkedList {
     this.value = node.value;
     this.next = new Node(headValue, headNext);
   }
+
+  size() {
+    let pointer = this;
+    let counter = 1;
+    while (pointer.next !== null) {
+      counter++;
+      pointer = pointer.next;
+    }
+    return counter;
+  }
 }
 
 class Node {
@@ -40,3 +50,4 @@ linkedList.prepend(new Node(1));
 linkedList.prepend(new Node(2));
 linkedList.prepend(new Node(3));
 console.log(linkedList);
+console.log(linkedList.size());
