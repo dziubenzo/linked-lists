@@ -8,9 +8,8 @@ class LinkedList {
     const addToEnd = (node, list = this) => {
       if (list.next === null) {
         return (list.next = node);
-      } else {
-        addToEnd(node, list.next);
       }
+      addToEnd(node, list.next);
     };
     addToEnd(node);
   }
@@ -40,11 +39,9 @@ class LinkedList {
     let lastNode;
     const findLast = (list = this) => {
       if (list.next === null) {
-        lastNode = list;
-        return;
-      } else {
-        findLast(list.next);
+        return (lastNode = list);
       }
+      findLast(list.next);
     };
     findLast();
     return lastNode;
@@ -56,9 +53,19 @@ class LinkedList {
       pointer = pointer.next;
     }
     if (pointer === null) {
-      return 'Error: Node does not exist. Try using a smaller index value.'
+      return 'Error: Node does not exist. Try using a smaller index value.';
     }
     return new Node(pointer.value);
+  }
+
+  pop() {
+    const findSecondLast = (list = this) => {
+      if (list.next.next === null) {
+        return (list.next = null);
+      }
+      findSecondLast(list.next);
+    };
+    findSecondLast();
   }
 }
 
@@ -83,3 +90,5 @@ console.log(linkedList);
 // console.log(linkedList.head());
 // console.log(linkedList.tail());
 // console.log(linkedList.at(8));
+linkedList.pop();
+console.log(linkedList.tail());
