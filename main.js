@@ -67,6 +67,17 @@ class LinkedList {
     };
     findSecondLast();
   }
+
+  contains(value) {
+    let pointer = this;
+    while (pointer !== null) {
+      if (pointer.value === value) {
+        return true;
+      }
+      pointer = pointer.next;
+    }
+    return false;
+  }
 }
 
 class Node {
@@ -92,3 +103,4 @@ console.log(linkedList);
 // console.log(linkedList.at(8));
 linkedList.pop();
 console.log(linkedList.tail());
+console.log(linkedList.contains(25));
