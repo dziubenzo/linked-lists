@@ -31,6 +31,10 @@ class LinkedList {
     }
     return counter;
   }
+
+  head() {
+    return new Node(this.value);
+  }
 }
 
 class Node {
@@ -51,3 +55,4 @@ linkedList.prepend(new Node(2));
 linkedList.prepend(new Node(3));
 console.log(linkedList);
 console.log(linkedList.size());
+console.log(linkedList.head());
