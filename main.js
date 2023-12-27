@@ -49,6 +49,17 @@ class LinkedList {
     findLast();
     return lastNode;
   }
+
+  at(index) {
+    let pointer = this;
+    for (let i = 0; i < index; i++) {
+      pointer = pointer.next;
+    }
+    if (pointer === null) {
+      return 'Error: Node does not exist. Try using a smaller index value.'
+    }
+    return new Node(pointer.value);
+  }
 }
 
 class Node {
@@ -70,4 +81,5 @@ linkedList.prepend(new Node(3));
 console.log(linkedList);
 // console.log(linkedList.size());
 // console.log(linkedList.head());
-console.log(linkedList.tail());
+// console.log(linkedList.tail());
+// console.log(linkedList.at(8));
